@@ -59,19 +59,19 @@ class Main{
     //     }
     // }
 
-    // _ShowAll = () => {
-    //     let text = this._storage.showAll();
-    //     if(text == ""){
-    //         this.sendMessage("Mostrar","No se encontro nada en la lista")
-    //     }
-    //     else{
-    //         this.sendMessage("Mostrar",`Las bases encontrados fueron: <br>` + text);
-    //     }
-    // }
+    _ShowAll = () => {
+        let text = this._tarjet.showAll();
+        if(text == ""){
+            this.sendMessage("Mostrar","No se encontro ninguna base")
+        }
+        else{
+            this.sendMessage("Mostrar",`Las bases encontrados fueron: <br>` + text);
+        }
+    }
 
-    // _TarjetStart = () => {
+    _TarjetStart = () => {
 
-    // }
+    }
 
     
 }

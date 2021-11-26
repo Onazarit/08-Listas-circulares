@@ -49,22 +49,17 @@ export default class Tarjet{
     //     return(elim);
     // }
 
-    // showAll(){
-    //     if(this._inicio == null){
-    //         return("");
-    //     }
-    //     else{
-    //         return(this._showAll(this._inicio));
-    //     }
-    // }
-
-    // _showAll(n){
-    //     if(n.siguiente == null){
-    //         return(n.info());
-    //     }
-    //     else{
-    //         return(n.info() + "<br>" + this._showAll(n.siguiente));
-    //     }
-    // }
+    showAll(){
+        let res="";
+        console.log(this._inicio);
+        if (this._inicio!=null){
+            let temp=this._inicio;
+            do{
+                res += temp.info() + '\n';
+                temp=temp.siguiente;
+            }while(temp!=this._inicio);
+        }
+        return res;
+    }
 
 }
