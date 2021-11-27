@@ -13,4 +13,8 @@ export default class Base{
     getName(){
         return(this._name);
     }
+
+    getTime(){
+        return(this._time);
+    }
 }

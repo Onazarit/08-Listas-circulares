@@ -1,7 +1,6 @@
 export default class Tarjet{
     constructor(){
         this._inicio = null;
-        this._limite = 0;
     }
 
     add(nuevo){
@@ -58,6 +57,50 @@ export default class Tarjet{
             }while(temp!=this._inicio);
         }
         return res;
+    }
+
+    crearTarjeta(base,hora, minutos){
+        let recorrido = `Saliendo a las ${hora}:00 de la base ${base}<br>`;
+        let minsHora = 0;
+        let temp = this._inicio;
+        if(base == temp.getName()){
+            console.log(base + " - " + temp.getName());
+            base = temp.siguiente;
+        }else{
+            temp = temp.siguiente;
+            while(temp != this._inicio){
+                if(base == temp.getName()){
+                    console.log(base + " - " + temp.getName());
+                    base = temp.siguiente;
+                }
+                temp = temp.siguiente;
+            }
+        }
+        console.log(temp);
+        console.log(base);
+        while(minutos > 0){
+            minutos -= base.getTime();
+            minsHora += Number(base.getTime());
+            if(minsHora > 59){
+                hora++;
+                minsHora -= 60;
+                if(minsHora < 10){
+                    minsHora = `0${minsHora}`
+                }
+            }
+            if(minutos > 0){
+                recorrido += `[${hora}:${minsHora}] Se llega a la base ${base.getName()} | Quedan ${minutos} minutos de recorrido <br>`
+            }else if(minutos == 0){
+                let final = minsHora - Math.abs(minutos);
+                recorrido += `[${hora}:${final}] Se detiene el reccorrido llegando justo a la base ${base.getName()}`
+            }else{
+                let final = minsHora - Math.abs(minutos);
+                recorrido += `[${hora}:${final}] Se detiene el reccorrido faltando ${Math.abs(minutos)} minutos para llegar a la base ${base.getName()}`
+            }
+            minsHora = Number(minsHora)
+            base = base.siguiente;
+        }
+        return(recorrido)
     }
 
 }

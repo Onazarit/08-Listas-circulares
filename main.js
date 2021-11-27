@@ -70,7 +70,13 @@ class Main{
     }
 
     _TarjetStart = () => {
+        let base = document.getElementById("tarjetBase").value;
+        let hora = document.getElementById("tarjetHour").value;
+        let minutos = document.getElementById("tarjetTrip").value;
 
+        let recorrido = this._tarjet.crearTarjeta(base,hora,minutos);
+
+        this.sendMessage("Crear Tarjeta / Recorrido", recorrido);
     }
 
     
