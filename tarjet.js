@@ -21,37 +21,35 @@ export default class Tarjet{
         }
     }
 
-    // remove(id){
-    //     let elim = null;
-    //     if(id == this._inicio.getId()){
-    //         elim = this._inicio;
-    //         this._inicio = this._inicio.siguiente;
-    //         if(this._inicio != null){
-    //             this._inicio.anterior = null;
-    //             this._limite--;
-    //         }
-    //         elim.siguiente = null;
-    //         return(elim);
-    //     }
-    //     let temp = this._inicio;
-    //     while(temp.siguiente != null && elim == null){
-    //         if(temp.siguiente.getId() == id){
-    //             elim = temp.siguiente;
-    //             temp.siguiente = temp.siguiente.siguiente;
-    //             temp.siguiente.siguiente.anterior = temp;
-    //             elim.siguiente = null;
-    //             elim.anterior = null;
-    //         }
-    //         else{
-    //             temp = temp.siguiente;
-    //         }
-    //     }
-    //     return(elim);
-    // }
+    remove(baseNombre){
+        let elim = null;
+        if(baseNombre == this._inicio.getName()){
+            elim = this._inicio;
+            let ultimo = this._inicio.anterior;
+            this._inicio = this._inicio.siguiente;
+            this._inicio.anterior = ultimo;
+            ultimo.siguiente = this._inicio;
+            return(elim);
+        }
+        
+        let temp = this._inicio
+        do{
+            if(temp.siguiente.getName() == baseNombre){
+                elim = temp.siguiente;
+                temp.siguiente = temp.siguiente.siguiente;
+                temp.siguiente.anterior = temp;
+                elim.siguiente = null;
+                elim.anterior = null;
+            }
+            else{
+                temp = temp.siguiente;
+            }
+        }while(temp != this._inicio)
+        return(elim);
+    }
 
     showAll(){
         let res="";
-        console.log(this._inicio);
         if (this._inicio!=null){
             let temp=this._inicio;
             do{

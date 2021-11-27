@@ -9,4 +9,8 @@ export default class Base{
     info(){
         return `<br>Base: ${this._name} | Tiempo: ${this._time} `;
     }
+
+    getName(){
+        return(this._name);
+    }
 }

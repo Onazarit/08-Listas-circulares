@@ -48,16 +48,16 @@ class Main{
         this.sendMessage("Añadir", msg);
     }
 
-    // _removeFromList = () => {
-    //     let codigo = document.getElementById("id").value;
-    //     let result = this._storage.remove(codigo);
-    //     if(result == null){
-    //         this.sendMessage("Eliminar",`No se encontro un producto con el codigo ${codigo}`);
-    //     }else{
-    //     let text = `Se elimino: <br> ${result.info()}`
-    //     this.sendMessage("Eliminar",text);
-    //     }
-    // }
+    _removeFromList = () => {
+        let nombreBase = document.getElementById("baseName").value;
+        let result = this._tarjet.remove(nombreBase);
+        if(result == null){
+            this.sendMessage("Eliminar",`No se encontro una base con el Nombre ${nombreBase}`);
+        }else{
+            let text = `Se elimino: <br> ${result.info()}`
+            this.sendMessage("Eliminar",text);
+        }
+    }
 
     _ShowAll = () => {
         let text = this._tarjet.showAll();
